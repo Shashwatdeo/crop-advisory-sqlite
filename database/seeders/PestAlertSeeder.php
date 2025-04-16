@@ -19,49 +19,97 @@ class PestAlertSeeder extends Seeder
                 'location' => 'Northern',
                 'crop' => 'Corn',
                 'severity' => 'High',
-                'description' => 'Significant infestation detected in 5 districts. Larvae found in 60% of surveyed fields.',
+                'description' => 'Corn borer infestation in 60% of surveyed fields'
             ],
             [
                 'location' => 'Southern',
                 'crop' => 'Rice',
                 'severity' => 'Medium',
-                'description' => 'Fungal lesions observed on leaves in 30% of paddies due to humid weather.',
+                'description' => 'Rice blast fungus detected in paddies'
             ],
             [
                 'location' => 'Central',
                 'crop' => 'Wheat',
                 'severity' => 'Critical',
-                'description' => 'Heavy aphid attack in 40% of wheat fields. Pesticide application advised.',
+                'description' => 'Severe aphid attack damaging wheat crops'
             ],
             [
                 'location' => 'Eastern',
                 'crop' => 'Soybean',
                 'severity' => 'Low',
-                'description' => 'Mild signs of leaf spot. No urgent intervention required.',
+                'description' => 'Mild leaf spot detected in soybean fields'
             ],
             [
                 'location' => 'Western',
                 'crop' => 'Vegetables',
                 'severity' => 'High',
-                'description' => 'Whiteflies spreading fast among brinjal crops. Regular monitoring recommended.',
+                'description' => 'Whiteflies spreading rapidly in brinjal crops'
             ],
             [
                 'location' => 'Northern',
                 'crop' => 'Fruits',
                 'severity' => 'Medium',
-                'description' => 'Fruit borers spotted in apple orchards. Early action can prevent spread.',
+                'description' => 'Fruit borers found in apple orchards'
             ],
             [
                 'location' => 'Southern',
                 'crop' => 'Corn',
                 'severity' => 'Critical',
-                'description' => 'Fall armyworm outbreak detected in southern belt. Emergency measures required.',
+                'description' => 'Fall armyworm outbreak spreading quickly'
             ],
             [
                 'location' => 'Central',
                 'crop' => 'Vegetables',
                 'severity' => 'Critical',
-                'description' => 'Widespread whitefly and leaf miner attack on tomatoes and brinjals.',
+                'description' => 'Whitefly and leaf miner attack on tomatoes'
+            ],
+            [
+                'location' => 'Western',
+                'crop' => 'Cotton',
+                'severity' => 'High',
+                'description' => 'Pink bollworm larvae in cotton bolls'
+            ],
+            [
+                'location' => 'Eastern',
+                'crop' => 'Potatoes',
+                'severity' => 'Medium',
+                'description' => 'Early signs of late blight in potatoes'
+            ],
+            [
+                'location' => 'Southern',
+                'crop' => 'Fruits',
+                'severity' => 'High',
+                'description' => 'Mango hoppers causing flower drop'
+            ],
+            [
+                'location' => 'Northern',
+                'crop' => 'Sugarcane',
+                'severity' => 'Critical',
+                'description' => 'Red rot disease confirmed in fields'
+            ],
+            [
+                'location' => 'Central',
+                'crop' => 'Groundnut',
+                'severity' => 'Medium',
+                'description' => 'Leaf miner activity increasing'
+            ],
+            [
+                'location' => 'Eastern',
+                'crop' => 'Banana',
+                'severity' => 'Critical',
+                'description' => 'Fusarium wilt detected in plantations'
+            ],
+            [
+                'location' => 'Western',
+                'crop' => 'Vegetables',
+                'severity' => 'High',
+                'description' => 'Thrips damaging chilli crops'
+            ],
+            [
+                'location' => 'Southern',
+                'crop' => 'Tea',
+                'severity' => 'Medium',
+                'description' => 'Mosquito bug populations rising'
             ]
         ];
 

@@ -187,6 +187,131 @@
                 padding: 0.8rem;
             }
         }
+
+        /* ========== PAGINATION STYLES ========== */
+        .pagination-container {
+        margin: 3rem 0;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .pagination {
+        display: inline-flex;
+        list-style: none;
+        padding: 0.5rem;
+        gap: 0.5rem;
+        align-items: center;
+        background: #f8f9fa;
+        border-radius: 12px;
+        box-shadow: var(--shadow);
+    }
+
+    .page-item {
+        margin: 0;
+        display: flex;
+        align-items: center;
+    }
+
+    .page-link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 42px;
+        height: 42px;
+        padding: 0 0.75rem;
+        border-radius: 8px;
+        border: 1px solid #e2e8f0;
+        background: white;
+        color: var(--dark-text);
+        font-weight: 500;
+        text-decoration: none;
+        transition: var(--transition);
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+    }
+
+    .page-item.active .page-link {
+        background: var(--primary-color);
+        border-color: var(--primary-color);
+        color: white;
+        box-shadow: 0 2px 6px rgba(46, 125, 50, 0.25);
+    }
+
+    .page-link:not(.active):hover {
+        background: #f1f5f9;
+        border-color: #cbd5e0;
+        transform: translateY(-1px);
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    }
+
+    .page-item.disabled .page-link {
+        color: #cbd5e0;
+        background: #f8f9fa;
+        border-color: #f1f5f9;
+        cursor: not-allowed;
+        box-shadow: none;
+    }
+
+    /* Navigation arrows */
+    .page-item:first-child .page-link,
+    .page-item:last-child .page-link {
+        min-width: 42px;
+        padding: 0;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        .pagination {
+            padding: 0.25rem;
+            gap: 0.25rem;
+        }
+        
+        .page-link {
+            min-width: 36px;
+            height: 36px;
+            padding: 0 0.5rem;
+            font-size: 0.85rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .pagination {
+            flex-wrap: wrap;
+            justify-content: center;
+            background: none;
+            box-shadow: none;
+            gap: 0.25rem;
+        }
+        
+        .page-link {
+            min-width: 32px;
+            height: 32px;
+        }
+    }
+
+    #scrollToTopBtn {
+    display: none;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 99;
+    font-size: 18px;
+    border: none;
+    outline: none;
+    background-color: #00704A;
+    color: white;
+    cursor: pointer;
+    padding: 12px 16px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+#scrollToTopBtn:hover {
+    background-color: #005f3b;
+}
+
+
+
     </style>
 </head>
 <body>
@@ -231,5 +356,26 @@
         </div>
         <p>&copy; {{ date('Y') }} Crop Advisory System | Powered by Laravel MVC</p>
     </footer>
+
+    <button id="scrollToTopBtn" title="Go to top">⬆️</button>
+
+    <script>
+    // Show/hide button on scroll
+     window.onscroll = function () {
+     const btn = document.getElementById("scrollToTopBtn");
+     if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+        btn.style.display = "block";
+     } else {
+        btn.style.display = "none";
+     }
+    };
+
+    // Scroll to top when clicked
+     document.getElementById("scrollToTopBtn").onclick = function () {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+</script>
+
+
 </body>
 </html>

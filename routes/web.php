@@ -15,4 +15,7 @@ Route::resource('crops', CropController::class); // RESTful resource route for C
 Route::get('/weather', [WeatherController::class, 'index'])->name('weather.index');
 Route::get('/pest-alerts', [PestAlertController::class, 'index'])->name('pest-alerts.index');
 Route::get('/crop-suggestions', [CropSuggestionController::class, 'index'])->name('crop-suggestions.index');
+// Add this route for the filter action
+Route::get('/pest-alerts/filter', [PestAlertController::class, 'filter'])->name('pestalerts.filter');
+
 

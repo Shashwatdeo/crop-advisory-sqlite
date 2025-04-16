@@ -15,7 +15,7 @@
         <form method="GET" action="{{ route('crops.index') }}" class="search-form">
             <div class="search-input-group">
                 <i class="fas fa-search"></i>
-                <input type="text" name="search" placeholder="Search crops..." value="{{ request('search') }}">
+                <input type="text" id="searchInput" name="search" placeholder="Search crops..." value="{{ request('search') }}">
                 <button type="submit" class="search-button">Search</button>
             </div>
         </form>
@@ -32,11 +32,18 @@
         </div>
     @else
         <div class="crops-grid">
-            @foreach($crops as $crop)
+        @foreach($crops as $index => $crop)
                 <div class="crop-card">
                     <div class="crop-header">
                         <h3>{{ $crop->name }}</h3>
-                        <span class="crop-id">#{{ $crop->id }}</span>
+                        <span class="crop-id">
+                            @if(request('search'))
+                                #{{ $crop->id }}
+                            @else
+                                #{{ ($crops->firstItem() ?? 0) + $index }}
+                            @endif
+                        </span>
+
                     </div>
                     <div class="crop-body">
                         <p class="crop-description">{{ Str::limit($crop->description, 150) }}</p>
@@ -66,13 +73,46 @@
             @endforeach
         </div>
 
-        @if($crops instanceof \Illuminate\Pagination\AbstractPaginator)
-            <div class="pagination-links">
-                {{ $crops->links() }}
-            </div>
+        @if($crops->hasPages())
+        <div class="pagination-container">
+        {{ $crops->links() }}
+        </div>
         @endif
     @endif
 </div>
+
+<!-- <script>
+    const searchInput = document.querySelector('input[name="search"]');
+
+    searchInput.addEventListener('input', function () {
+        if (this.value === '') {
+            this.form.submit(); // Auto-submit when cleared
+        }
+    });
+</script> -->
+
+<script>
+    // Debounce search with clear-reset
+    function debounce(func, delay) {
+        let timer;
+        return function (...args) {
+            clearTimeout(timer);
+            timer = setTimeout(() => func.apply(this, args), delay);
+        };
+    }
+
+    const searchInput = document.querySelector('input[name="search"]');
+    const searchForm = searchInput.closest('form');
+
+    const handleSearch = debounce(() => {
+        searchForm.submit();
+    }, 500);
+
+    searchInput.addEventListener('input', handleSearch);
+</script>
+
+
+
 
 <style>
     /* Main Container */
@@ -316,27 +356,94 @@
     }
 
     /* Pagination */
-    .pagination-links {
+    .pagination-container {
+        margin: 3rem 0 1rem;
         display: flex;
         justify-content: center;
-        margin-top: 2rem;
     }
 
-    .pagination-links .pagination {
+    .pagination {
         display: flex;
+        list-style: none;
+        padding: 0;
         gap: 0.5rem;
     }
 
-    .pagination-links .page-item.active .page-link {
-        background: var(--primary-color);
-        border-color: var(--primary-color);
+    .page-item {
+        margin: 0;
     }
 
-    .pagination-links .page-link {
-        color: var(--primary-dark);
-        border: 1px solid #ddd;
-        padding: 0.5rem 0.8rem;
-        border-radius: 4px;
+    .page-link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 40px;
+        height: 40px;
+        padding: 0 0.75rem;
+        border-radius: 8px;
+        border: 1px solid #e2e8f0;
+        background: white;
+        color: #4a5568;
+        font-weight: 500;
+        text-decoration: none;
+        transition: all 0.2s ease;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    }
+
+    .page-item.active .page-link {
+        background: var(--primary-color);
+        border-color: var(--primary-color);
+        color: white;
+        box-shadow: 0 2px 4px rgba(46, 125, 50, 0.2);
+    }
+
+    .page-link:not(.active):hover {
+        background: #f7fafc;
+        border-color: #cbd5e0;
+        transform: translateY(-1px);
+    }
+
+    .page-item.disabled .page-link {
+        color: #a0aec0;
+        background: #f8f9fa;
+        border-color: #e2e8f0;
+        cursor: not-allowed;
+        opacity: 0.7;
+    }
+
+    /* Responsive adjustments */
+      @media (max-width: 640px) {
+        .pagination {
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .page-link {
+            min-width: 36px;
+            height: 36px;
+            padding: 0 0.5rem;
+            font-size: 0.875rem;
+        }
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 640px) {
+        .pagination {
+            flex-wrap: wrap;
+            gap: 0.25rem;
+        }
+        
+        .page-link {
+            min-width: 36px;
+            height: 36px;
+            padding: 0 0.5rem;
+            font-size: 0.875rem;
+        }
+        
+        .page-item:first-child .page-link,
+        .page-item:last-child .page-link {
+            padding: 0 0.75rem;
+        }
     }
 
     /* Responsive */

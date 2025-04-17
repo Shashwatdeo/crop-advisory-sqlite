@@ -177,12 +177,12 @@
                 flex-direction: column;
                 align-items: center;
             }
-            
+
             nav ul li {
                 width: 100%;
                 text-align: center;
             }
-            
+
             nav ul li a {
                 padding: 0.8rem;
             }
@@ -265,7 +265,7 @@
             padding: 0.25rem;
             gap: 0.25rem;
         }
-        
+
         .page-link {
             min-width: 36px;
             height: 36px;
@@ -282,7 +282,7 @@
             box-shadow: none;
             gap: 0.25rem;
         }
-        
+
         .page-link {
             min-width: 32px;
             height: 32px;
@@ -347,15 +347,16 @@
 
     <!-- Footer Section -->
     <footer>
-        <div class="social-links">
-            <a href="#"><i class="fab fa-facebook"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-linkedin"></i></a>
-            <a href="#"><i class="fab fa-youtube"></i></a>
-        </div>
-        <p>&copy; {{ date('Y') }} Crop Advisory System | Powered by Laravel MVC</p>
-    </footer>
+    <div class="social-links">
+        <a href="YOUR_FACEBOOK_LINK_HERE" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+        <a href="https://x.com/shashwatdeo" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.instagram.com/_.shashwat_dev._/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/shashwat-deo/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="https://www.youtube.com/@shashwatdeo7511" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        <a href="https://github.com/Shashwatdeo/" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+    </div>
+    <p>&copy; {{ date('Y') }} Crop Advisory System | Powered by Laravel MVC | <a href="https://github.com/Shashwatdeo/crop-advisory" target="_blank" aria-label="GitHub Repository">View on GitHub</a></p>
+</footer>
 
     <button id="scrollToTopBtn" title="Go to top">⬆️</button>
 
